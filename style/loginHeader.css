@@ -1,0 +1,22 @@
+header {
+    background-color: var(--frame-back-color);
+    user-select: none;
+}
+
+header h1 {
+    position: relative;
+    max-width: 80vw;
+    min-width: 75vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    height: 60px;
+}
+
+header h1 a {
+    font-family: 'Piazzolla', serif;
+    color: var(--frame-accent-color);
+    white-space: nowrap;
+    text-decoration: none;
+}

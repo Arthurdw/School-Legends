@@ -1,0 +1,23 @@
+:root {
+    --background-color: #293241;
+    --frame-back-color: #3d5a80;
+    --frame-text-color: #e0fbfc;
+    --frame-accent-color: #ee6c4d;
+    --frame-detail-color: #98c1d9;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: var(--background-color);
+}
+
+main {
+    margin: 10px auto 0 auto;
+    max-width: 80vw;
+    min-width: 75vw;
+}
