@@ -49,6 +49,8 @@ header .inner-header-wrapper nav a:hover {
 }
 
 header .inner-header-wrapper nav .inner-wrapper .sign-out {
+    position: relative;
+    z-index: 50;
     display: none;
     align-items: center;
     justify-content: center;
