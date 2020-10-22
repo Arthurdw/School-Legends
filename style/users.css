@@ -48,12 +48,12 @@
 .user-wrapper {
   text-decoration: none;
   background-color: rgba(0, 0, 0, 0);
+  transition: background-color 0.256s ease-in-out;
 }
 
 .user-wrapper:hover {
-  transition: background-color 0.128s ease-in-out;
   background-color: rgba(0, 0, 0, 0.1);
-  box-shadow: inset 0px 0px 40px 50px var(--frame-back-color);
+  border-radius: 5px;
 }
 
 .vote-wrapper {

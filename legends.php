@@ -34,7 +34,7 @@ if (!isset($users)) $users = $userHandler->users;
     <main>
         <section class="wrapper">
             <?php foreach ($users as $user) : ?>
-                <section class="user">
+                <section class="user" <?php echo isLoggedIn() ? (unserialize($_SESSION['user'])->id == $user->id ? "style='background-color: #FFD700'" : "") : "" ?>>
                     <div class="vote-wrapper">
                         <button onclick="upVote('<?php echo $user->id; ?>')">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
