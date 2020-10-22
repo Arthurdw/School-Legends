@@ -40,7 +40,14 @@ class File
     {
         $_data = explode(PHP_EOL, file_get_contents($this->path));
         foreach ($_data as $row) {
-            if (!(trim($row) == "")) $data[] = explode(";", $row);
+            if (!(trim($row) == "")) {
+                unset($temp);
+                $_temp = explode(";", $row);
+                foreach ($_temp as $item) {
+                    $temp[] = htmlspecialchars($item, ENT_QUOTES, 'UTF-8');
+                }
+                $data[] = $temp;
+            }
         }
         return $data;
     }
@@ -119,6 +126,13 @@ class SchoolHandler extends File
         }
 
         return $schools;
+    }
+
+    public function getSchool($id)
+    {
+        foreach ($this->schools as $school) {
+            if ($school->id == $id) return $school;
+        }
     }
 }
 

@@ -23,17 +23,18 @@ $schoolHandler = new SchoolHandler(getcwd() . schools_file);
 <body>
     <?php include getcwd() . "/includes/header.php"; ?>
     <main>
-        <?php foreach ($schoolHandler->schools as $school) : ?>
-            <div class="school-wrapper">
-                <div class="img-container">
-                    <img src="<?php echo $school->icon; ?>" alt="<?php echo $school->short_name; ?>">
-                </div>
-                <div class="text-container">
-                    <h1><?php echo $school->full_name; ?> (<?php echo $school->short_name; ?>)</h1>
+        <section class="wrapper">
+            <?php foreach ($schoolHandler->schools as $school) : ?>
+                <section class="school-wrapper">
+                    <div class="img-container">
+                        <img src="<?php echo $school->icon; ?>" alt="<?php echo $school->short_name; ?>">
+                    </div>
+                    <div class="text-container">
+                        <h1><?php echo $school->full_name; ?> (<?php echo $school->short_name; ?>)</h1>
+                    </div>
                     <a href="./legends.php?school=<?php echo $school->id; ?>">Bekijk de school legends!</a>
-                </div>
-            </div>
-        <?php endforeach; ?>
+                </section>
+            <?php endforeach; ?></section>
     </main>
 </body>
 
