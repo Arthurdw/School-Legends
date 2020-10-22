@@ -1,2 +1,3 @@
 hJ17eF5djrRNdICaq18B1CiIzISmtCV8;GO-AO;GO-Atheneum Oudenaarde;Oudenaarde;https://bezoek.go-atheneumoudenaarde.be/images/go-ao/GO-AO_Logo_RGB.jpg
 VfjTmlxykpD8px7M8FYjqRDQG5hkQQMK;Bernardus;Sint-Bernarduscollege Oudenaarde;Oudenaarde;https://www.bernarduscollege.be/src/Frontend/Themes/Custom/Core/Layout/images/bernarduscollegelogo.jpg
+DulPE3kiEjB5INivxq3BojNVGrIGyblr;KAZ;Koninklijk Atheneum Zottegem;Zottegem;https://mk0beiaardonlind5n4o.kinstacdn.com/wp-content/uploads/2017/04/atheneum-zottegem.png
