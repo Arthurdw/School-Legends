@@ -1,6 +1,7 @@
 :root {
     --background-color: #293241;
     --frame-back-color: #3d5a80;
+    --frame-back-color-trans: #3d5a80e0;
     --frame-text-color: #e0fbfc;
     --frame-accent-color: #ee6c4d;
     --frame-detail-color: #98c1d9;

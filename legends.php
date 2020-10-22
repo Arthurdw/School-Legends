@@ -2,6 +2,8 @@
 session_start();
 
 include getcwd() . "/includes/fileHandler.php";
+
+$userHandler = new UsersHandler(getcwd() . users_file);
 ?>
 
 <!DOCTYPE html>
@@ -19,8 +21,24 @@ include getcwd() . "/includes/fileHandler.php";
 <body>
     <?php include getcwd() . "/includes/header.php"; ?>
     <main>
-
+        <?php foreach ($userHandler->users as $user) : ?>
+            <section>
+                <div class="vote-wrapper">
+                    <button onclick="upVote('<?php echo $user->id; ?>')"></button>
+                    <button onclick="downVote('<?php echo $user->id; ?>')"></button>
+                </div>
+                <div class="user-wrapper">
+                    <div class="img-container">
+                        <img src="<?php echo $user->avatar; ?>" alt="<?php echo $user->nickname; ?>">
+                    </div>
+                    <div class="text-container">
+                        <h1><?php echo $user->nickname; ?></h1>
+                    </div>
+                </div>
+            </section>
+        <?php endforeach; ?>
     </main>
+    <script src="./js/vote.js"></script>
 </body>
 
 </html>

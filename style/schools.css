@@ -24,6 +24,7 @@
     max-width: 100%;
     max-height: 100%;
     border-radius: 5px;
+    user-select: none;
 }
 
 .school-wrapper .text-container {
@@ -52,6 +53,10 @@
     border-bottom-right-radius: 5px;
     text-decoration: none;
     font-size: 20px;
+}
+
+.school-wrapper .text-container a:hover {
+    background-color: var(--frame-back-color-trans);
 }
 
 @media (max-width: 1300px) {
