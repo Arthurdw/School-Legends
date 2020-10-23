@@ -1,6 +1,7 @@
 <?php
 const users_file = "/data/users.txt";
 const schools_file = "/data/schools.txt";
+const votes_file = "/data/votes.txt";
 
 class UserIndexes
 {
@@ -51,6 +52,13 @@ class File
         }
         return $data;
     }
+
+    public function addLine($data)
+    {
+        $content = file_get_contents($this->path);
+        file_put_contents($this->path, $content . PHP_EOL . implode(";", $data));
+    }
+
 }
 
 class UsersHandler extends File
@@ -151,5 +159,69 @@ class School
         $this->full_name = $full_name;
         $this->location = $location;
         $this->icon = $icon;
+    }
+}
+
+
+class VoteIndexes
+{
+    public const ID = 0;
+    public const POST = 1;
+    public const OWNER = 2;
+}
+
+class VoteHandler extends File
+{
+    public $votes;
+
+    public function __construct($path)
+    {
+        parent::__construct($path);
+        $this->votes = $this->getAllVotes();
+    }
+
+    private function getAllVotes()
+    {
+        foreach ($this->data as $row) {
+            $votes[] = new Vote(
+                $row[VoteIndexes::ID],
+                $row[VoteIndexes::POST],
+                $row[VoteIndexes::OWNER]
+            );
+        }
+
+        return $votes;
+    }
+
+    public function getPostVotes($postId)
+    {
+        foreach ($this->votes as $vote) {
+            if ($vote->post == $postId) $votes[] = $vote;
+        }
+        return isset($votes) ? $votes : array();
+    }
+
+    public function userHasVoted($userId, $postId) {
+        return in_array($userId, array_column($this->getPostVotes($postId), 'owner'));
+    }
+
+    public function addVote($userId, $postId) {
+        if (!$this->userHasVoted($userId, $postId)) {
+            $this->addLine(array(generateToken(), $postId, $userId));
+        }
+    }
+}
+
+class Vote
+{
+    public $id;
+    public $post;
+    public $owner;
+
+    public function __construct($id, $post, $owner)
+    {
+        $this->id = $id;
+        $this->post = $post;
+        $this->owner = $owner;
     }
 }
