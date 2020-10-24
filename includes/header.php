@@ -17,7 +17,7 @@ include getcwd() . "/includes/loginHandler.php";
             <?php if (isLoggedIn()) : ?>
                 <?php $user = unserialize($_SESSION['user']) ?>
                 <div class="inner-wrapper">
-                    <a href="./profile.php?user=<?php echo $user->id ?>"><?php echo $user->nickname ?></a>
+                    <a href="./profile.php"><?php echo $user->nickname ?></a>
                     <a class="sign-out" href="./logout.php">Sign Out</a>
                 </div>
             <?php else : ?>
