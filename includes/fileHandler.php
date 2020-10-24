@@ -50,15 +50,30 @@ class File
                 $data[] = $temp;
             }
         }
+
+        if (!isset($data)) $data = array();
+
         return $data;
     }
 
     public function addLine($data)
     {
         $content = file_get_contents($this->path);
-        file_put_contents($this->path, $content . PHP_EOL . implode(";", $data));
+        file_put_contents($this->path, $content . implode(";", $data) . PHP_EOL);
     }
 
+    public function removeLine($data) 
+    {
+        $fileContent = file_get_contents($this->path);
+        $dataFormatted = implode(";", $data);
+        foreach (explode(PHP_EOL, $fileContent) as $row) 
+        {
+            if ($row != $dataFormatted) $content[] = $row;
+        }
+
+        if (!isset($content)) $content = array();
+        file_put_contents($this->path, implode(PHP_EOL, $content));
+    }
 }
 
 class UsersHandler extends File
@@ -190,6 +205,8 @@ class VoteHandler extends File
             );
         }
 
+        if (!isset($votes)) $votes = array();
+
         return $votes;
     }
 
@@ -201,14 +218,29 @@ class VoteHandler extends File
         return isset($votes) ? $votes : array();
     }
 
-    public function userHasVoted($userId, $postId) {
+    public function userHasVoted($userId, $postId)
+    {
         return in_array($userId, array_column($this->getPostVotes($postId), 'owner'));
     }
 
-    public function addVote($userId, $postId) {
+    public function addVote($userId, $postId)
+    {
         if (!$this->userHasVoted($userId, $postId)) {
             $this->addLine(array(generateToken(), $postId, $userId));
+            return true;
         }
+        return false;
+    }
+
+    public function removeVote($userId, $postId)
+    {
+        foreach ($this->votes as $vote) {
+            if ($vote->post == $postId && $vote->owner == $userId) {
+                $this->removeLine(array($vote->id, $vote->post, $vote->owner));
+                return true;
+            }
+        }
+        return false;
     }
 }
 
