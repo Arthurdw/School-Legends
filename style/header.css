@@ -62,3 +62,13 @@ header .inner-header-wrapper nav .inner-wrapper .sign-out {
 header .inner-header-wrapper nav .inner-wrapper:hover .sign-out  {
     display: flex;
 }
+
+@media (max-width: 600px) {
+    header .inner-header-wrapper {
+        justify-content: center;
+    }
+
+    header .inner-header-wrapper nav {
+        display: none;
+    }
+}

@@ -1,7 +1,6 @@
 <?php
 include getcwd() . "/includes/loginHandler.php";
 ?>
-<!-- The common website header -->
 <header>
     <link href="https://fonts.googleapis.com/css2?family=Piazzolla:ital,wght@1,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style/header.css">
@@ -17,7 +16,8 @@ include getcwd() . "/includes/loginHandler.php";
             <?php if (isLoggedIn()) : ?>
                 <?php $user = unserialize($_SESSION['user']) ?>
                 <div class="inner-wrapper">
-                    <a href="./profile.php"><?php echo $user->nickname ?></a>
+                    <!-- <a href="./profile.php"><?php echo $user->nickname ?></a> -->
+                    <a href="#"><?php echo $user->nickname ?></a>
                     <a class="sign-out" href="./logout.php">Sign Out</a>
                 </div>
             <?php else : ?>
