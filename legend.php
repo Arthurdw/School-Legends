@@ -15,10 +15,10 @@ function getUser()
     return null;
 }
 
-$user = getUser();
-if ($user == null) Header("Location: ./legends.php");
+$member = getUser();
+if ($member == null) Header("Location: ./legends.php");
 $schoolHandler = new SchoolHandler(getcwd() . schools_file);
-$school = $schoolHandler->getSchool($user->school);
+$school = $schoolHandler->getSchool($member->school);
 $voteHandler = new VoteHandler(getcwd() . votes_file);
 ?>
 
@@ -38,11 +38,11 @@ $voteHandler = new VoteHandler(getcwd() . votes_file);
     <main>
         <div class="wrapper">
             <div class="votes">
-                <h2>Upvotes: <span><?php echo count($voteHandler->getPostVotes($user->id)); ?></span></h2>
+                <h2>Upvotes: <span><?php echo count($voteHandler->getPostVotes($member->id)); ?></span></h2>
             </div>
             <div class="user">
-                <img src="<?php echo $user->avatar; ?>" alt="<?php echo $user->nickname; ?> their profile picture">
-                <h1><?php echo $user->nickname; ?></h1>
+                <img src="<?php echo $member->avatar; ?>" alt="<?php echo $member->nickname; ?> their profile picture">
+                <h1><?php echo $member->nickname; ?></h1>
             </div>
             <a class="school" href="./legends.php?school=<?php echo $school->id; ?>">
                 <img src="<?php echo $school->icon; ?>" alt="<?php echo $school->short_name ?> their icon">
