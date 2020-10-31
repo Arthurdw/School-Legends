@@ -1,0 +1,37 @@
+.wrapper {
+    color: var(--frame-text-color);
+}
+
+.wrapper h4 {
+    margin: 10px 0 0 0;
+}
+
+.wrapper ul {
+    display: flex;
+    margin: 0 0 0 25px;
+    padding: 0;
+    flex-direction: column;
+}
+
+.wrapper ul li {
+    margin: 5px 0;
+    color: var(--frame-accent-color);
+    opacity: 0.9;
+    transition: all 0.256 ease-in-out;
+}
+
+.wrapper ul li:hover {
+    opacity: 1;
+}
+
+.wrapper ul li a {
+    color: var(--frame-text-color);
+    text-decoration: underline;
+    text-decoration-color: var(--background-color);
+    transition: all 0.256s ease-in-out;
+}
+
+.wrapper ul li a:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--frame-accent-color);
+}
