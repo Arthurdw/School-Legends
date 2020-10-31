@@ -58,6 +58,7 @@
 
 .vote-wrapper {
   align-items: center;
+  user-select: none;
 }
 
 .vote-wrapper button:first-child {
@@ -79,12 +80,14 @@
   cursor: pointer;
 }
 
+.vote-plus svg,
 .vote-wrapper button:first-child:hover svg {
-  fill: var(--frame-accent-color);
+  fill: var(--frame-accent-color) !important;
 }
 
+.vote-minus svg,
 .vote-wrapper button:last-child:hover svg {
-  fill: var(--frame-detail-color);
+  fill: var(--frame-detail-color) !important;
 }
 
 .vote-wrapper button svg {
@@ -95,6 +98,7 @@
 .img-container {
   display: flex;
   justify-content: center;
+  user-select: none;
 }
 
 .img-container img {

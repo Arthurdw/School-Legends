@@ -33,8 +33,8 @@ if (isset($_GET["school"])) {
     <main>
         <?php if (isset($users)) : ?>
             <section class="wrapper">
-                <?php 
-                usort($users, function($a, $b) { 
+                <?php
+                usort($users, function ($a, $b) {
                     global $voteHandler;
                     $first = count($voteHandler->getPostVotes($a->id));
                     $second = count($voteHandler->getPostVotes($b->id));
@@ -43,13 +43,13 @@ if (isset($_GET["school"])) {
                 foreach ($users as $user) : ?>
                     <section class="user" <?php echo isLoggedIn() ? (unserialize($_SESSION['user'])->id == $user->id ? "style='background-color: #FFD700'" : "") : "" ?>>
                         <div class="vote-wrapper">
-                            <button onclick="upVote('<?php echo $user->id; ?>')">
+                            <button <?php if (isLoggedIn()): ?>onclick="upVote(this, '<?php echo $user->id; ?>')" <?php if ($voteHandler->userHasVoted(unserialize($_SESSION['user'])->id, $user->id)) : ?>class="vote-plus" <?php endif; endif; ?>>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                     <path d="M24 12l-12-9v5h-12v8h12v5l12-9z" />
                                 </svg>
                             </button>
                             <p><?php echo count($voteHandler->getPostVotes($user->id)); ?></p>
-                            <button onclick="downVote('<?php echo $user->id; ?>')">
+                            <button <?php if (isLoggedIn()): ?>onclick="downVote(this, '<?php echo $user->id; ?>')"<?php endif; ?>>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                     <path d="M24 12l-12-9v5h-12v8h12v5l12-9z" />
                                 </svg>
@@ -61,7 +61,7 @@ if (isset($_GET["school"])) {
                             </div>
                             <div class="text-container">
                                 <h1><?php echo $user->nickname; ?></h1>
-                                <h2><?php echo $schoolHandler->getSchool($user->school)->full_name ?></h2>
+                                <h2><?php echo $schoolHandler->getSchool($user->school)->full_name; ?></h2>
                             </div>
                         </a>
                     </section>

@@ -1,9 +1,13 @@
-function upVote(id) {
+function upVote(el, id) {
     sendVote("up", id);
+    el.classList.toggle("vote-plus");
+    el.classList.remove("vote-minus");
 }
 
-function downVote(id) { 
+function downVote(el, id) { 
     sendVote("down", id);
+    el.classList.toggle("vote-minus");
+    el.classList.remove("vote-plus");
 }
 
 function sendVote(mode, id) {
