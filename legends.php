@@ -33,7 +33,14 @@ if (isset($_GET["school"])) {
     <main>
         <?php if (isset($users)) : ?>
             <section class="wrapper">
-                <?php foreach ($users as $user) : ?>
+                <?php 
+                usort($users, function($a, $b) { 
+                    global $voteHandler;
+                    $first = count($voteHandler->getPostVotes($a->id));
+                    $second = count($voteHandler->getPostVotes($b->id));
+                    return (!($first == $second) && ($first > $second)) ? 0 : 1;
+                });
+                foreach ($users as $user) : ?>
                     <section class="user" <?php echo isLoggedIn() ? (unserialize($_SESSION['user'])->id == $user->id ? "style='background-color: #FFD700'" : "") : "" ?>>
                         <div class="vote-wrapper">
                             <button onclick="upVote('<?php echo $user->id; ?>')">
